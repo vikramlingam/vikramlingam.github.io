@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SIP Calculator</title>
+</head>
+<body>
+  <h1>SIP Calculator</h1>
+
+  <form>
+    <label for="monthly_contribution">Monthly Contribution:</label>
+    <input type="number" id="monthly_contribution" name="monthly_contribution">
+    <br>
+    <label for="annual_return">Annual Return (%):</label>
+    <input type="number" id="annual_return" name="annual_return">
+    <br>
+    <label for="years">Number of Years:</label>
+    <input type="number" id="years" name="years">
+    <br><br>
+    <button onclick="calculate(event)">Calculate</button>
+  </form>
+  <p id="total_return_label">Total Return:</p>
+  <p id="total_invested_label">Total Invested:</p>
+
+  <script>
+    function calculate(event) {
+      event.preventDefault();
+      // Get user input
+      let monthly_contribution = document.getElementById("monthly_contribution").value;
+      let annual_return = document.getElementById("annual_return").value;
+      let years = document.getElementById("years").value;
+
+      // Calculate total return and total invested amount
+      let r = annual_return/100;
+      let n = 12;
+      let i = r/n;
+      let total_return =  monthly_contribution * (((1 + i)**(n*years))-1)/i*(1+i);
+      let total_invested = monthly_contribution * 12 * years;
+
+      // Set the results
+      document.getElementById("total_return_label").innerHTML = "Total Return: " + total_return;
+      document.getElementById("total_invested_label").innerHTML = "Total Invested: " + total_invested;
+    }
+  </script>
+</body>
+</html>
