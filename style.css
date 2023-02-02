@@ -4,7 +4,7 @@
 */
    
 /* default styles */
-body { padding: 5px 0 0 0; margin: 0; font: .7em Times, Arial, sans-serif; line-height: 1.7em; background: rgb(255, 255, 255) url(images/bg.gif) repeat-x; color: #454545; }
+body { padding: 5px 0 0 0; margin: 0; font: .8em Times, Arial, sans-serif; line-height: 1.7em; background: rgb(255, 255, 255) url(images/bg.gif) repeat-x; color: #454545; }
 a { color: #000000; background: inherit; }
 a:hover { color: #808080; background: inherit; }
 p {	margin: 0 0 5px 0; }
