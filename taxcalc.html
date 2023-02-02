@@ -1,0 +1,102 @@
+<html>
+  <head>
+    <title>Income Tax Calculator (FY 2023-24)</title>
+    <style>
+      body {
+        background-color: khaki;
+        font-family: Times, sans-serif;
+      }
+      .container {
+        background-color: whitesmoke;
+        padding: 20px;
+        border-radius: 10px;
+        margin: 50px auto;
+        width: 400px;
+      }
+      h1 {
+        text-align: center;
+        font-size: 36px;
+        margin-bottom: 40px;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      label {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+      input[type="text"] {
+        font-size: 18px;
+        padding: 10px;
+        width: 300px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+      }
+      button {
+        background-color: #87CEFA;
+        color: white;
+        padding: 10px 20px;
+        font-size: 18px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .introduction {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Income Tax Calculator (FY 2023-24)</h1>
+      <div class="introduction">
+        <p>
+          The recent Union Budget that was announced on 1st February 2023 has introduced a New Tax Regime that now allows standard deduction of Rs. 50,000. The new slab rates are as follows:
+        </p>
+        <p>
+          Rs 0 to Rs 3 lakh - 0% tax rate<br>
+          Rs 3 lakh to 6 lakh - 5%<br>
+          Rs 6 lakh to 9 lakh - 10%<br>
+          Rs 9 lakh to Rs 12 lakh - 15%<br>
+          Rs 12 lakh to Rs 15 lakh - 20%<br>
+          Above Rs 15 lakh - 30%
+        
+        </p>
+      </div>
+      <form>
+        <label for="income">Income:</label>
+        <input type="text" id="income" name="income">
+        <br><br>
+        <label for="tax">Tax including 4% cess:</label>
+        <input type="text" id="tax" name="tax" readonly>
+        <br><br>
+        <button type="button" onclick="calculateTax()">Calculate</button>
+      </form>
+    </div>
+    <script>
+        function calculateTax() {
+         var income = document.querySelector("input[name='income']").value;
+        var tax = 0;
+        var taxableIncome = income - 50000;
+        if (taxableIncome <= 700000) {
+          tax = 0;
+        } else if (taxableIncome <= 600000) {
+          tax = (taxableIncome - 300000) * 0.05;
+        } else if (taxableIncome <= 900000) {
+          tax = 15000 + (taxableIncome - 600000) * 0.1;
+        } else if (taxableIncome <= 1200000) {
+          tax = 45000 + (taxableIncome - 900000) * 0.15;
+        } else if (taxableIncome <= 1500000) {
+          tax = 90000 + (taxableIncome - 1200000) * 0.2;
+        } else {
+          tax = 150000 + (taxableIncome - 1500000) * 0.3;
+        }
+        tax = tax + (tax * 0.04);
+        document.querySelector("input[name='tax']").value = tax;
+      }
+    </script>
+  </body>
+</html>
